@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ROOT_DIR="$(dirname $0)/.."
+LIB_DIR="$ROOT_DIR/lib"
+. "$LIB_DIR/posix-wars.sh"
+
+posix-wars "$@"
