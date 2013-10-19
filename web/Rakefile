@@ -1,0 +1,24 @@
+require 'pathname'
+load Pathname.new(__FILE__).dirname.join('app.rb')
+
+namespace :queue do
+  task :process do
+    QueuedScript.transaction do
+      queue_entry = QueuedScript.peek
+
+      if queue_entry
+        script = queue_entry.script
+
+        Script.all(:map_name => script.map_name).each do |other_script|
+          next if script == other_script
+
+          Match.run!(script.map, [script, other_script])
+        end
+
+        # queue_entry.destroy
+      else
+        puts "no scripts to run right now"
+      end
+    end
+  end
+end

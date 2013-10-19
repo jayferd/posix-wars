@@ -15,6 +15,8 @@ posix-wars() {
       if exists posix-wars::"$1"; then
         local cmd="$1"; shift
         posix-wars::"$cmd" "$@"
+      else
+        posix-wars::usage
       fi
     ;;
   esac

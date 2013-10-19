@@ -1,0 +1,7 @@
+<h1>Leaderboard</h1>
+
+<ol>
+  <% @leaders.each do |script| %>
+    <li><a href="/scripts/<%= script.id %>"><%= script.filename %></a>, by <%= script.author %>
+  <% end %>
+</ol>

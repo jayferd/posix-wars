@@ -1,0 +1,7 @@
+<a href="/">&laquo; Back</a>
+<h1><%= @script.filename %></h1>
+
+by <%= @script.author %>
+written for the map <%= @script.map.name %>
+
+<%= @formatter.format(@lexer.lex(@script.source)) %>

@@ -1,0 +1,42 @@
+<h1>Posix Wars!</h1>
+
+<h2>Submit a script!</h2>
+
+<form method="post" action="/scripts">
+  <label for="author">
+    Your Name
+    <input type="text" name="author" />
+  </label>
+  <br />
+
+  <label for="map_name">
+    Choose a map!
+    <select name="map_name">
+      <% Map.all.each do |map| %>
+        <option label="<%= map.name %>" value="<%= map.name %>" />
+      <% end %>
+    </select>
+  </label>
+
+  <br />
+  <label for="filename">
+    Filename:
+    <input type="text" name="filename" />
+  </label>
+
+  <br />
+  <label for="source">
+    Source:
+<pre><textarea name="source" rows=50 cols=80>
+#!/bin/bash
+
+TARGET_FILE="$1"
+HASH="$2"
+
+echo "$HASH" &gt; "$TARGET_FILE"
+</textarea></pre>
+  </label>
+
+  <br />
+  <input type="submit" />
+</form>
